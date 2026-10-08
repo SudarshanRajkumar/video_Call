@@ -12,37 +12,14 @@ A private, quiet sanctuary built for two. No signups, no ads, no algorithms, and
 
 Every line of code in this repository was written with one person in mind. Whether across cities, time zones, or busy days, this space exists so that whenever we need to see each other's smiles or hear each other's voices, our doorway is always open.
 
-
-```markdown
-# Sudarshan ♥ Taniya 🌹
-
-> *"Distance means so little when someone means so much."*
-
----
-
-A private, quiet sanctuary built for two. No signups, no ads, no algorithms, and no third parties—just a single link, a shared secret word, and a place where miles between us disappear.
-
----
-
-### 💫 Our Little Corner of the Web
-
-Every line of code in this repository was written with one person in mind. Whether across cities, time zones, or busy days, this space exists so that whenever we need to see each other's smiles or hear each other's voices, our doorway is always open.
-
-
-```
-
-```
-      🌹                                      🌹
-
-```
-
-┌───────────────┐                      ┌───────────────┐
-│               │                      │               │
-│    Taniya     │   ♥ Together ♥       │   Sudarshan   │
-│               │                      │               │
-└───────────────┘                      └───────────────┘
-
-```
+<pre>
+          🌹                                      🌹
+   ┌───────────────┐                      ┌───────────────┐
+   │               │                      │               │
+   │    Taniya     │   ♥ Together ♥       │   Sudarshan   │
+   │               │                      │               │
+   └───────────────┘                      └───────────────┘
+</pre>
 
 ---
 
@@ -71,7 +48,5 @@ Every line of code in this repository was written with one person in mind. Wheth
 
 Whenever the world gets too loud, or the distance feels a little too heavy, remember this place was made specifically for you.
 
-*Forever yours,*  
+*Forever yours,*<br>
 **Sudarshan**
-
-```
