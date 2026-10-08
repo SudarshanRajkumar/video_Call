@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sudarshan ♥ Taniya</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌹</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<style>
+:root{--ink:#fff0f4;--muted:#e0a9bc;--rose:#ff5d86;--gold:#f2c27a;--line:rgba(255,185,205,.35);color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100dvh;color:var(--ink);font-family:"Fraunces",Georgia,serif;overflow-x:hidden;
+ background:radial-gradient(90% 60% at 50% 0%,#6b1138 0%,transparent 70%),radial-gradient(80% 60% at 50% 110%,#4a0f3a 0%,transparent 70%),#1c0613;
+ padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom)}
+#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+section{position:relative;z-index:1;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;max-width:920px;margin:0 auto;padding:28px 0}
+[hidden]{display:none!important}
+.script{font-family:"Pinyon Script","Snell Roundhand",cursive;font-weight:400}
+/* roses */
+.rose{width:var(--r,90px);height:var(--r,90px);filter:drop-shadow(0 6px 18px rgba(255,60,110,.45));animation:bloom 1.8s cubic-bezier(.2,.8,.2,1) both,sway 7s ease-in-out 1.8s infinite}
+@keyframes bloom{from{transform:scale(.1) rotate(-120deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes sway{50%{transform:rotate(5deg) scale(1.04)}}
+.garland{display:flex;align-items:flex-end;justify-content:center;gap:6px}
+.garland .rose:nth-child(1),.garland .rose:nth-child(3){--r:64px;animation-delay:.5s,2.3s}
+.garland .rose:nth-child(2){--r:112px}
+/* hero */
+.mono{display:flex;align-items:center;justify-content:center;gap:.25em;font-size:clamp(4.5rem,24vw,9rem);line-height:1;margin:0}
+.gt{background:linear-gradient(100deg,#f2c27a,#fff0f4,#ff8aa8,#f2c27a);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 9s linear infinite;padding:0 .08em}
+@keyframes shine{to{background-position:-300% 0}}
+.plus{color:var(--rose);font-size:.5em;text-shadow:0 0 24px var(--rose);animation:beat 1.8s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.35)}30%{transform:scale(1)}45%{transform:scale(1.2)}}
+.names{font-size:clamp(1.8rem,7vw,2.8rem);color:var(--blush,#ffd3df);margin:0}
+.lede{color:var(--muted);max-width:36ch;margin:0;font-size:1.05rem;font-style:italic}
+.rise{animation:fadeup 1.4s ease both}
+.d1{animation-delay:.6s}.d2{animation-delay:1s}.d3{animation-delay:1.4s}
+@keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+/* controls */
+input{font:inherit;color:var(--ink);background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:999px;padding:12px 18px;width:min(320px,100%);text-align:center}
+input::placeholder{color:#b88aa0}
+button{font:inherit;cursor:pointer;color:var(--ink);background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:999px;padding:11px 20px;transition:transform .2s,background .2s}
+button:hover{transform:translateY(-2px);background:rgba(255,255,255,.14)}
+button.main{background:linear-gradient(135deg,#ff5d86,#d6285f);border-color:transparent;font-weight:600;padding:13px 26px;box-shadow:0 8px 28px rgba(255,70,120,.4)}
+button[aria-pressed="true"]{background:var(--ink);color:#4a0a24}
+button.leave{border-color:#ff7b8f;color:#ffb3be}
+button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.fields{display:flex;flex-direction:column;gap:12px;align-items:center;width:100%}
+.who{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+/* call */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,4vw,36px);width:100%;padding:0 10px}
+.frame{position:relative}
+.frame .rose{position:absolute;bottom:-16px;--r:58px;z-index:2;animation-delay:.3s,2.1s}
+.frame .rose.l{left:-14px}.frame .rose.r{right:-14px;animation-delay:.6s,2.4s}
+.arch{position:relative;aspect-ratio:3/4;border-radius:999px 999px 22px 22px;overflow:hidden;border:1px solid var(--line);background:#12081a;animation:glow 3.6s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 40px rgba(255,90,140,.2)}50%{box-shadow:0 0 90px rgba(255,90,140,.5)}}
+.arch video{width:100%;height:100%;object-fit:cover;display:block}
+#local{transform:scaleX(-1)}
+.tag{position:absolute;left:0;right:0;bottom:14px;font-size:clamp(1.5rem,6vw,2.1rem);text-shadow:0 2px 12px #000}
+.wait{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;color:var(--muted);font-style:italic}
+.timer{font-size:clamp(1.4rem,5.5vw,2rem);color:var(--gold);margin:6px 0 0;font-variant-numeric:tabular-nums}
+.heart{display:inline-block;color:var(--rose);animation:beat 1.8s ease-in-out infinite}
+.bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+#say{color:var(--muted);min-height:1.4em;margin:0;font-style:italic}
+/* floating hearts */
+.fly{position:fixed;bottom:-40px;z-index:5;pointer-events:none;opacity:0;text-shadow:0 0 14px currentColor;animation:up var(--d) ease-in forwards}
+@keyframes up{10%{opacity:.85}100%{transform:translate(var(--x),-115vh) rotate(25deg);opacity:0}}
+@media (prefers-reduced-motion:reduce){.rose,.gt,.plus,.heart,.arch,.rise{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="petals" aria-hidden="true"></canvas>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs><radialGradient id="rg" cx="50%" cy="50%" r="65%"><stop offset="0" stop-color="#ff7a9e"/><stop offset="1" stop-color="#a30f3a"/></radialGradient></defs>
+ <symbol id="rose" viewBox="-50 -50 100 100">
+  <g fill="url(#rg)" stroke="#5c0521" stroke-width=".7">
+   <ellipse rx="20" ry="27" cy="-17"/><ellipse rx="20" ry="27" cy="-17" transform="rotate(72)"/><ellipse rx="20" ry="27" cy="-17" transform="rotate(144)"/><ellipse rx="20" ry="27" cy="-17" transform="rotate(216)"/><ellipse rx="20" ry="27" cy="-17" transform="rotate(288)"/>
+   <ellipse rx="16" ry="22" cy="-11" transform="rotate(36)"/><ellipse rx="16" ry="22" cy="-11" transform="rotate(108)"/><ellipse rx="16" ry="22" cy="-11" transform="rotate(180)"/><ellipse rx="16" ry="22" cy="-11" transform="rotate(252)"/><ellipse rx="16" ry="22" cy="-11" transform="rotate(324)"/>
+  </g>
+  <g fill="#ff93b0" stroke="#7a0a2b" stroke-width=".6">
+   <ellipse rx="11" ry="15" cy="-6"/><ellipse rx="11" ry="15" cy="-6" transform="rotate(72)"/><ellipse rx="11" ry="15" cy="-6" transform="rotate(144)"/><ellipse rx="11" ry="15" cy="-6" transform="rotate(216)"/><ellipse rx="11" ry="15" cy="-6" transform="rotate(288)"/>
+  </g>
+  <path d="M0 -3C-7 -3 -8 5 0 6C9 7 11 -7 0 -10C-13 -13 -16 6 -4 12" fill="none" stroke="#ffd0dc" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
+ </symbol>
+</svg>
+
+<section id="home">
+  <div class="garland"><svg class="rose"><use href="#rose"/></svg><svg class="rose"><use href="#rose"/></svg><svg class="rose"><use href="#rose"/></svg></div>
+  <h1 class="mono script rise d1" aria-label="S plus T"><span class="gt">S</span><span class="plus">+</span><span class="gt">T</span></h1>
+  <p class="names script rise d2">Sudarshan &amp; Taniya</p>
+  <p class="lede rise d2" id="homeText">Wherever we are, this is where we meet.</p>
+  <div class="fields rise d3">
+    <input id="word" placeholder="Our secret word" maxlength="40" autocomplete="off" aria-label="Our secret word">
+    <div class="who">
+      <button class="main" id="bs">I'm Sudarshan</button>
+      <button class="main" id="bt">I'm Taniya</button>
+    </div>
+  </div>
+</section>
+
+<section id="call" hidden>
+  <div class="pair">
+    <div class="frame">
+      <div class="arch"><video id="remote" autoplay playsinline></video><div class="wait" id="wait"></div><div class="tag script" id="theirTag"></div></div>
+      <svg class="rose l"><use href="#rose"/></svg><svg class="rose r"><use href="#rose"/></svg>
+    </div>
+    <div class="frame">
+      <div class="arch"><video id="local" autoplay playsinline muted></video><div class="tag script" id="myTag"></div></div>
+      <svg class="rose l"><use href="#rose"/></svg><svg class="rose r"><use href="#rose"/></svg>
+    </div>
+  </div>
+  <p class="timer" id="timerBox" hidden><span class="heart">♥</span> Together for <span id="t">00:00:00</span></p>
+  <p id="say" role="status" aria-live="polite"></p>
+  <div class="bar">
+    <button class="main" id="love">Send love ♥</button>
+    <button id="mic" aria-pressed="false">Mute</button>
+    <button id="cam" aria-pressed="false">Camera off</button>
+    <button id="link">Copy link</button>
+    <button id="leave" class="leave">Leave</button>
+  </div>
+</section>
+
+<script>
+const $ = id => document.getElementById(id);
+const NAMES = { s: 'Sudarshan', t: 'Taniya' };
+
+// Add your TURN server credentials here if calls fail on mobile/cellular data
+// Example: {urls:'turn:global.relay.metered.ca:80', username:'...', credential:'...'}
+const TURN = []; 
+
+const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
+const clean = s => s.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const store = { get: k => { try { return localStorage.getItem(k) || ''; } catch { return ''; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
+const sha = async s => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)))].slice(0, 12).map(b => b.toString(16).padStart(2, '0')).join('');
+const say = m => { $('say').textContent = m; };
+
+/* ---------- screen wake lock ---------- */
+let wakeLock = null;
+async function requestWakeLock() {
+  try {
+    if ('wakeLock' in navigator) wakeLock = await navigator.wakeLock.request('screen');
+  } catch (err) {
+    console.log('Wake Lock failed:', err);
+  }
+}
+function releaseWakeLock() {
+  if (wakeLock) {
+    wakeLock.release().then(() => wakeLock = null).catch(() => {});
+  }
+}
+document.addEventListener('visibilitychange', async () => {
+  if (wakeLock !== null && document.visibilityState === 'visible') requestWakeLock();
+});
+
+/* ---------- falling petals ---------- */
+const cv = $('petals'), cx = cv.getContext('2d');
+let W, H, lastW = innerWidth; 
+const P = [];
+const fit = () => { W = cv.width = innerWidth; H = cv.height = innerHeight; };
+// Only resize canvas if the width actually changes to prevent mobile address bar jumping
+addEventListener('resize', () => {
+  if (innerWidth !== lastW) { lastW = innerWidth; fit(); }
+});
+fit();
+
+const petal = init => ({ x: Math.random() * W, y: init ? Math.random() * H : -20, s: 6 + Math.random() * 10, vy: .4 + Math.random() * .9, vx: (Math.random() - .5) * .4,
+  a: Math.random() * 6.28, va: (Math.random() - .5) * .03, sw: Math.random() * 6.28, c: `hsl(${338 + Math.random() * 20} ${70 + Math.random() * 25}% ${42 + Math.random() * 22}%)` });
+for (let i = 0; i < (reduced ? 0 : 40); i++) P.push(petal(true));
+(function draw() {
+  cx.clearRect(0, 0, W, H);
+  for (const p of P) {
+    p.sw += .02; p.x += p.vx + Math.sin(p.sw) * .6; p.y += p.vy; p.a += p.va;
+    if (p.y > H + 20) Object.assign(p, petal(false));
+    cx.save(); cx.translate(p.x, p.y); cx.rotate(p.a); cx.scale(1, .6 + .4 * Math.cos(p.sw));
+    cx.fillStyle = p.c; cx.globalAlpha = .8; cx.beginPath(); cx.moveTo(0, -p.s);
+    cx.bezierCurveTo(p.s * .9, -p.s * .6, p.s * .8, p.s * .6, 0, p.s);
+    cx.bezierCurveTo(-p.s * .8, p.s * .6, -p.s * .9, -p.s * .6, 0, -p.s); cx.fill(); cx.restore();
+  }
+  requestAnimationFrame(draw);
+})();
+
+/* ---------- floating hearts ---------- */
+function spawn(x, dur, size, drift) {
+  const h = document.createElement('span');
+  h.className = 'fly'; h.textContent = '♥';
+  h.style.cssText = `left:${x}vw;font-size:${size}px;--d:${dur}s;--x:${drift}vw;color:hsl(${335 + Math.random() * 25} 85% ${60 + Math.random() * 15}%)`;
+  h.onanimationend = () => h.remove();
+  document.body.appendChild(h);
+}
+const burst = () => { for (let i = 0; i < 28; i++) setTimeout(() => spawn(20 + Math.random() * 60, 3 + Math.random() * 2.5, 16 + Math.random() * 30, (Math.random() - .5) * 20), i * 70); };
+if (!reduced) setInterval(() => spawn(Math.random() * 100, 9 + Math.random() * 5, 10 + Math.random() * 10, (Math.random() - .5) * 10), 1500);
+
+/* ---------- the call ---------- */
+let me, other, base, slot, peer, call, dc, stream, retry, timer;
+$('word').value = clean(decodeURIComponent(location.hash.slice(1))) || store.get('justus-word');
+$('bs').onclick = () => enter('s');$('bt').onclick = () => enter('t');
+
+async function enter(who) {
+  const word = clean($('word').value);
+  if (!word) return void ($('homeText').textContent = 'Choose a secret word only the two of you know.');
+  store.set('justus-word', word);
+  me = who; other = who === 's' ? 't' : 's';
+  $('theirTag').textContent = NAMES[other]; $('myTag').textContent = NAMES[me];$('wait').textContent = 'Waiting for ' + NAMES[other] + '…';
+  $('home').hidden = true; $('call').hidden = false;
+  try { stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: true }); }
+  catch { return leave('Camera or microphone is blocked. Allow access in your browser, then come in again.'); }
+  $('local').srcObject = stream;
+  base = 'justus-' + await sha(word);
+  register('-a');
+}
+
+function register(sfx) {
+  slot = sfx;
+  const p = peer = new Peer(base + sfx, { config: { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }, ...TURN] } });
+  p.on('open', () => { if (sfx === '-a') say('Waiting for ' + NAMES[other] + '. Copy the link to bring them in.'); else dial(); });
+  p.on('call', c => { c.answer(stream); watch(c); });
+  p.on('connection', link);
+  p.on('disconnected', () => { if (!p.destroyed) p.reconnect(); });
+  p.on('error', e => {
+    if (e.type === 'unavailable-id') { p.destroy(); return sfx === '-a' ? register('-b') : leave('This room already has two people in it.'); }
+    if (e.type === 'peer-unavailable' && slot === '-b') { clearTimeout(retry); retry = setTimeout(dial, 3000); return; }
+    say('Connection trouble (' + e.type + '). Check your internet and try again.');
+  });
+}
+
+function dial() {
+  if (!peer || peer.destroyed || slot !== '-b') return;
+  const id = base + '-a';
+  watch(peer.call(id, stream));
+  link(peer.connect(id));
+}
+function watch(c) {
+  if (!c) return;
+  call = c;
+  c.on('stream', s => { $('remote').srcObject = s; together(); });
+  c.on('close', () => {
+    if (call !== c) return;
+    call = null; apart();
+    if (slot === '-b') { clearTimeout(retry); retry = setTimeout(dial, 3000); }
+  });
+}
+function link(c) {
+  if (!c) return;
+  dc = c;
+  c.on('data', d => { if (d === 'love') burst(); });
+}
+
+function together() {
+  $('wait').hidden = true; $('timerBox').hidden = false; say('');
+  requestWakeLock();
+  if (timer) return;
+  const t0 = Date.now();
+  timer = setInterval(() => {
+    const s = Math.floor((Date.now() - t0) / 1000);
+    $('t').textContent = [s / 3600, (s / 60) % 60, s % 60].map(v => String(Math.floor(v)).padStart(2, '0')).join(':');
+  }, 1000);
+}
+function stopTimer() { clearInterval(timer); timer = null; $('timerBox').hidden = true; $('t').textContent = '00:00:00'; }
+function apart() {
+  if (!timer) return;
+  stopTimer(); $('remote').srcObject = null; $('wait').hidden = false;
+  releaseWakeLock();
+  say(NAMES[other] + ' stepped away. They can come back with the same link.');
+}
+
+$('love').onclick = () => { burst(); if (dc && dc.open) dc.send('love'); };
+function toggle(id, kind, on, off) {
+  $(id).onclick = () => {
+    if (!stream) return;
+    const tracks = kind === 'a' ? stream.getAudioTracks() : stream.getVideoTracks();
+    const turnOff = $(id).getAttribute('aria-pressed') !== 'true';
+    tracks.forEach(t => { t.enabled = !turnOff; });
+    $(id).setAttribute('aria-pressed', String(turnOff));$(id).textContent = turnOff ? off : on;
+  };
+}
+toggle('mic', 'a', 'Mute', 'Unmute');
+toggle('cam', 'v', 'Camera off', 'Camera on');
+$('link').onclick = async () => {
+  const url = location.origin + location.pathname + '#' + clean($('word').value);
+  try { await navigator.clipboard.writeText(url); say('Link copied. Send it to ' + NAMES[other] + '.'); } catch { say(url); }
+};
+
+function leave(msg) {
+  stopTimer(); clearTimeout(retry);
+  releaseWakeLock();
+  if (peer) peer.destroy();
+  peer = call = dc = null;
+  if (stream) stream.getTracks().forEach(t => t.stop());
+  stream = null;
+  $('local').srcObject = null; $('remote').srcObject = null; $('wait').hidden = false;
+  $('call').hidden = true; $('home').hidden = false;
+  $('homeText').textContent = typeof msg === 'string' ? msg : 'Come back whenever you like.';
+}
+$('leave').onclick = () => leave();
+</script>
+</body>
+</html>
