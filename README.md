@@ -1,15 +1,77 @@
-# Sudarshan ♥ Taniya
+# Sudarshan ♥ Taniya 🌹
 
-A private video call for two. One static page, no server to run.
+> *"Distance means so little when someone means so much."*
 
-## How it works
-Video goes directly between your two browsers (WebRTC). The free public PeerJS cloud server only helps you find each other.
-Both of you open the site, type the same secret word, and tap your own name.
+---
 
-## Deploy on Vercel
-1. Put `index.html` and `README.md` in a GitHub repo.
-2. On vercel.com choose Add New > Project, import the repo, keep the defaults (Framework: Other), and Deploy.
-3. Open your `https://...vercel.app` address on both devices. HTTPS is required for the camera.
+A private, quiet sanctuary built for two. No signups, no ads, no algorithms, and no third parties—just a single link, a shared secret word, and a place where miles between us disappear.
 
-## If it will not connect on mobile data
-Some mobile networks block direct connections. Add a TURN server to the `TURN` list near the top of the script in `index.html`.
+---
+
+### 💫 Our Little Corner of the Web
+
+Every line of code in this repository was written with one person in mind. Whether across cities, time zones, or busy days, this space exists so that whenever we need to see each other's smiles or hear each other's voices, our doorway is always open.
+
+
+```markdown
+# Sudarshan ♥ Taniya 🌹
+
+> *"Distance means so little when someone means so much."*
+
+---
+
+A private, quiet sanctuary built for two. No signups, no ads, no algorithms, and no third parties—just a single link, a shared secret word, and a place where miles between us disappear.
+
+---
+
+### 💫 Our Little Corner of the Web
+
+Every line of code in this repository was written with one person in mind. Whether across cities, time zones, or busy days, this space exists so that whenever we need to see each other's smiles or hear each other's voices, our doorway is always open.
+
+
+```
+
+```
+      🌹                                      🌹
+
+```
+
+┌───────────────┐                      ┌───────────────┐
+│               │                      │               │
+│    Taniya     │   ♥ Together ♥       │   Sudarshan   │
+│               │                      │               │
+└───────────────┘                      └───────────────┘
+
+```
+
+---
+
+### ✨ Features Built with Love
+
+- 🌸 **Falling Petals & Swaying Roses:** A gentle, blooming canvas inspired by your elegance, greeting us the second we step in.
+- 🔐 **Our Secret Word:** Secured by SHA-256 cryptographic hashing—only someone holding our exact private passphrase can step into our room.
+- 📱 **Peer-to-Peer Intimacy:** Direct WebRTC video and crystal-clear audio flowing straight between our devices without passing through external servers.
+- 💬 **Whispered Chats:** A private, synchronized messaging stream alongside the video so we never miss a thought.
+- 💖 **"Send Love" Bursts:** A tap of a button sends a shower of floating hearts across both of our screens in real time.
+- ⏱️ **Our Time Together:** A live counter ticking upward, celebrating every second spent side-by-side.
+- 🌙 **Screen Wake Lock:** Keeps our phones awake throughout late-night calls without the screen dimming.
+
+---
+
+### 🌹 How to Step Inside
+
+1. Visit **[sudarshanrajkumar.github.io/video_Call](https://sudarshanrajkumar.github.io/video_Call/)**
+2. Type our secret word.
+3. Tap your name.
+4. *Welcome home.*
+
+---
+
+### 💌 To Taniya
+
+Whenever the world gets too loud, or the distance feels a little too heavy, remember this place was made specifically for you.
+
+*Forever yours,*  
+**Sudarshan**
+
+```
