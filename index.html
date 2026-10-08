@@ -17,7 +17,7 @@ body{min-height:100dvh;color:var(--ink);font-family:"Fraunces",Georgia,serif;ove
  background:radial-gradient(90% 60% at 50% 0%,#6b1138 0%,transparent 70%),radial-gradient(80% 60% at 50% 110%,#4a0f3a 0%,transparent 70%),#1c0613;
  padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom)}
 #petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
-section{position:relative;z-index:1;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;max-width:920px;margin:0 auto;padding:28px 0}
+section{position:relative;z-index:1;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;max-width:1100px;margin:0 auto;padding:28px 0}
 [hidden]{display:none!important}
 .script{font-family:"Pinyon Script","Snell Roundhand",cursive;font-weight:400}
 /* roses */
@@ -49,7 +49,9 @@ button.leave{border-color:#ff7b8f;color:#ffb3be}
 button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .fields{display:flex;flex-direction:column;gap:12px;align-items:center;width:100%}
 .who{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-/* call */
+/* call layout */
+.call-layout{display:flex;flex-wrap:wrap;gap:24px;width:100%;justify-content:center;align-items:stretch;margin-top:20px}
+.video-panel{flex:1 1 500px;display:flex;flex-direction:column;gap:16px;align-items:center}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,4vw,36px);width:100%;padding:0 10px}
 .frame{position:relative}
 .frame .rose{position:absolute;bottom:-16px;--r:58px;z-index:2;animation-delay:.3s,2.1s}
@@ -58,12 +60,21 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-o
 @keyframes glow{0%,100%{box-shadow:0 0 40px rgba(255,90,140,.2)}50%{box-shadow:0 0 90px rgba(255,90,140,.5)}}
 .arch video{width:100%;height:100%;object-fit:cover;display:block}
 #local{transform:scaleX(-1)}
-.tag{position:absolute;left:0;right:0;bottom:14px;font-size:clamp(1.5rem,6vw,2.1rem);text-shadow:0 2px 12px #000}
-.wait{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;color:var(--muted);font-style:italic}
-.timer{font-size:clamp(1.4rem,5.5vw,2rem);color:var(--gold);margin:6px 0 0;font-variant-numeric:tabular-nums}
+.tag{position:absolute;left:0;right:0;bottom:14px;font-size:clamp(1.5rem,6vw,2.1rem);text-shadow:0 2px 12px #000;text-align:center}
+.wait{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;color:var(--muted);font-style:italic;text-align:center}
+.timer{font-size:clamp(1.4rem,5.5vw,2rem);color:var(--gold);margin:6px 0 0;font-variant-numeric:tabular-nums;text-align:center}
 .heart{display:inline-block;color:var(--rose);animation:beat 1.8s ease-in-out infinite}
 .bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-#say{color:var(--muted);min-height:1.4em;margin:0;font-style:italic}
+#say{color:var(--muted);min-height:1.4em;margin:0;font-style:italic;text-align:center}
+/* chat panel */
+.chat-panel{flex:1 1 300px;display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:22px;overflow:hidden;height:clamp(400px, 70vh, 750px);box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.chat-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:0.95rem;text-align:left;scroll-behavior:smooth}
+.chat-msg{padding:10px 14px;border-radius:18px;max-width:85%;word-wrap:break-word;line-height:1.4;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.chat-msg.me{background:linear-gradient(135deg,#ff5d86,#d6285f);color:white;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-msg.them{background:rgba(255,255,255,.12);color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-form{display:flex;gap:8px;padding:12px;background:rgba(0,0,0,.3);border-top:1px solid var(--line)}
+.chat-form input{width:100%;text-align:left;border-radius:18px;padding:12px 16px;background:rgba(255,255,255,.08)}
+.chat-form button{padding:10px 20px;border-radius:18px}
 /* floating hearts */
 .fly{position:fixed;bottom:-40px;z-index:5;pointer-events:none;opacity:0;text-shadow:0 0 14px currentColor;animation:up var(--d) ease-in forwards}
 @keyframes up{10%{opacity:.85}100%{transform:translate(var(--x),-115vh) rotate(25deg);opacity:0}}
@@ -102,24 +113,36 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-o
 </section>
 
 <section id="call" hidden>
-  <div class="pair">
-    <div class="frame">
-      <div class="arch"><video id="remote" autoplay playsinline></video><div class="wait" id="wait"></div><div class="tag script" id="theirTag"></div></div>
-      <svg class="rose l"><use href="#rose"/></svg><svg class="rose r"><use href="#rose"/></svg>
+  <div class="call-layout">
+    <div class="video-panel">
+      <div class="pair">
+        <div class="frame">
+          <div class="arch"><video id="remote" autoplay playsinline></video><div class="wait" id="wait"></div><div class="tag script" id="theirTag"></div></div>
+          <svg class="rose l"><use href="#rose"/></svg><svg class="rose r"><use href="#rose"/></svg>
+        </div>
+        <div class="frame">
+          <div class="arch"><video id="local" autoplay playsinline muted></video><div class="tag script" id="myTag"></div></div>
+          <svg class="rose l"><use href="#rose"/></svg><svg class="rose r"><use href="#rose"/></svg>
+        </div>
+      </div>
+      <p class="timer" id="timerBox" hidden><span class="heart">♥</span> Together for <span id="t">00:00:00</span></p>
+      <p id="say" role="status" aria-live="polite"></p>
+      <div class="bar">
+        <button class="main" id="love">Send love ♥</button>
+        <button id="mic" aria-pressed="false">Mute</button>
+        <button id="cam" aria-pressed="false">Camera off</button>
+        <button id="link">Copy link</button>
+        <button id="leave" class="leave">Leave</button>
+      </div>
     </div>
-    <div class="frame">
-      <div class="arch"><video id="local" autoplay playsinline muted></video><div class="tag script" id="myTag"></div></div>
-      <svg class="rose l"><use href="#rose"/></svg><svg class="rose r"><use href="#rose"/></svg>
+    
+    <div class="chat-panel">
+      <div class="chat-msgs" id="chatMsgs"></div>
+      <form id="chatForm" class="chat-form">
+        <input type="text" id="chatInput" placeholder="Message..." autocomplete="off" required>
+        <button type="submit" class="main">Send</button>
+      </form>
     </div>
-  </div>
-  <p class="timer" id="timerBox" hidden><span class="heart">♥</span> Together for <span id="t">00:00:00</span></p>
-  <p id="say" role="status" aria-live="polite"></p>
-  <div class="bar">
-    <button class="main" id="love">Send love ♥</button>
-    <button id="mic" aria-pressed="false">Mute</button>
-    <button id="cam" aria-pressed="false">Camera off</button>
-    <button id="link">Copy link</button>
-    <button id="leave" class="leave">Leave</button>
   </div>
 </section>
 
@@ -128,7 +151,6 @@ const $ = id => document.getElementById(id);
 const NAMES = { s: 'Sudarshan', t: 'Taniya' };
 
 // Add your TURN server credentials here if calls fail on mobile/cellular data
-// Example: {urls:'turn:global.relay.metered.ca:80', username:'...', credential:'...'}
 const TURN = []; 
 
 const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -160,7 +182,6 @@ const cv = $('petals'), cx = cv.getContext('2d');
 let W, H, lastW = innerWidth; 
 const P = [];
 const fit = () => { W = cv.width = innerWidth; H = cv.height = innerHeight; };
-// Only resize canvas if the width actually changes to prevent mobile address bar jumping
 addEventListener('resize', () => {
   if (innerWidth !== lastW) { lastW = innerWidth; fit(); }
 });
@@ -232,21 +253,62 @@ function dial() {
   watch(peer.call(id, stream));
   link(peer.connect(id));
 }
+
 function watch(c) {
   if (!c) return;
   call = c;
-  c.on('stream', s => { $('remote').srcObject = s; together(); });
+  c.on('stream', s => { 
+    $('remote').srcObject = s; 
+    $('remote').play().catch(e => console.log('Audio/Video play blocked by browser. User interaction needed.', e));
+    together(); 
+  });
   c.on('close', () => {
     if (call !== c) return;
     call = null; apart();
     if (slot === '-b') { clearTimeout(retry); retry = setTimeout(dial, 3000); }
   });
 }
+
 function link(c) {
   if (!c) return;
   dc = c;
-  c.on('data', d => { if (d === 'love') burst(); });
+  c.on('data', d => { 
+    try {
+      const data = JSON.parse(d);
+      if (data.type === 'love') burst();
+      if (data.type === 'chat') addChat(data.text, 'them');
+    } catch {
+      // Fallback for previous cached version
+      if (d === 'love') burst(); 
+    }
+  });
 }
+
+/* ---------- chat system ---------- */
+$('chatForm').onsubmit = (e) => {
+  e.preventDefault();
+  const input = $('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  addChat(text, 'me');
+  if (dc && dc.open) {
+    dc.send(JSON.stringify({ type: 'chat', text }));
+  }
+};
+
+function addChat(text, sender) {
+  const div = document.createElement('div');
+  div.className = `chat-msg ${sender}`;
+  div.textContent = text;
+  $('chatMsgs').appendChild(div);
+  $('chatMsgs').scrollTop =$('chatMsgs').scrollHeight;
+}
+
+$('love').onclick = () => { 
+  burst(); 
+  if (dc && dc.open) dc.send(JSON.stringify({ type: 'love' })); 
+};
 
 function together() {
   $('wait').hidden = true; $('timerBox').hidden = false; say('');
@@ -258,7 +320,9 @@ function together() {
     $('t').textContent = [s / 3600, (s / 60) % 60, s % 60].map(v => String(Math.floor(v)).padStart(2, '0')).join(':');
   }, 1000);
 }
+
 function stopTimer() { clearInterval(timer); timer = null; $('timerBox').hidden = true; $('t').textContent = '00:00:00'; }
+
 function apart() {
   if (!timer) return;
   stopTimer(); $('remote').srcObject = null; $('wait').hidden = false;
@@ -266,7 +330,6 @@ function apart() {
   say(NAMES[other] + ' stepped away. They can come back with the same link.');
 }
 
-$('love').onclick = () => { burst(); if (dc && dc.open) dc.send('love'); };
 function toggle(id, kind, on, off) {
   $(id).onclick = () => {
     if (!stream) return;
@@ -278,6 +341,7 @@ function toggle(id, kind, on, off) {
 }
 toggle('mic', 'a', 'Mute', 'Unmute');
 toggle('cam', 'v', 'Camera off', 'Camera on');
+
 $('link').onclick = async () => {
   const url = location.origin + location.pathname + '#' + clean($('word').value);
   try { await navigator.clipboard.writeText(url); say('Link copied. Send it to ' + NAMES[other] + '.'); } catch { say(url); }
@@ -291,6 +355,7 @@ function leave(msg) {
   if (stream) stream.getTracks().forEach(t => t.stop());
   stream = null;
   $('local').srcObject = null; $('remote').srcObject = null; $('wait').hidden = false;
+  $('chatMsgs').innerHTML = '';
   $('call').hidden = true; $('home').hidden = false;
   $('homeText').textContent = typeof msg === 'string' ? msg : 'Come back whenever you like.';
 }
